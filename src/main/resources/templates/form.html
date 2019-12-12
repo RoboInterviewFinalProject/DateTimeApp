@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<!--<label for="meeting-time">Choose a time for your appointment:</label>-->
+
+<!--<input type="datetime-local" id="meeting-time"-->
+<!--       name="meeting-time" value="2019-06-12T19:30"-->
+<!--       min="2019-01-01T00:00" max="2020-12-31T00:00">-->
+
+<!--<form>-->
+<!--    <label>-->
+<!--        Choose your preferred party date (required, April 1st to 20th):-->
+<!--        <input type="date" name="party" min="2017-04-01" max="2017-04-20" required>-->
+<!--        <span class="validity"></span>-->
+<!--    </label>-->
+
+<!--    <p>-->
+<!--        <button>Submit</button>-->
+<!--    </p>-->
+<!--</form>-->
+
+<!--        <input type="date" name="applyDate" min="2019-01-01" max="2020-12-31">-->
+
+<form action="#" th:action="@{/processform}" method="post">
+    <div th:if="${errorMessage}!=null" th:text="${errorMessage}">
+    </div>
+    <div>
+        <label for="date1">Today's Date is</label>
+        <input type="date" id="date1" name="date1Form" th:value="${date1}">
+    </div>
+    <div>
+        <label for="interview-date">Choose a date for your interview:</label>
+        <input type="date" id="interview-date" name="interview-date" th:min="${date1}" th:max="${date1.plusDays(14)}">
+    </div>
+    <div>
+        <label for="timeNow">Current time is</label>
+        <input type="time" id="timeNow" name="timeNow" th:value="${time1}">
+    </div>
+    <div>
+        <label for="interview-time">Choose a time for your interview:</label>
+        <input type="time" id="interview-time"
+               name="interview-time" th:min="${time1}" max="T23:30">
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+
+</body>
+</html>
